@@ -31,15 +31,15 @@ int main(int argc, const char * argv[]) {
     //1-1. FILE pointer open
     if (argc != 2)
     {
-        printf("[ERROR] syntax : infestPath (file path).");
-        return -1;
+        printf("[ERROR] syntax : infestPath (file path)."); //argc는 기본적으로 실행경로가 하나 들어가므로 환자정보 파일 위치만을 넣으면 2가 된다. 
+        return -1; //따라서 2가 아닐 경우 이상한게 더 들어갔거나 환자 정보가 없는 것이므로 -1 return 
     }
     
     fp = fopen(argv[1],"r");
     if (fp == NULL)
     {
-        printf("[ERROR] Failed to open database file!! (%s)\n", argv[1]);
-        return -1;
+        printf("[ERROR] Failed to open database file!! (%s)\n", argv[1]);//argc[1]에 환자정보 파일이 들어가 있으므로 read모드로 fopen한걸 fp에 담는다 
+        return -1;//fp가 NULL이면 fopen 실패한것이므로 -1return 
     }
     
     // 실행 파라미터를 통해 파일 경로 및 이름을 받아와서 파일을 읽음
@@ -55,8 +55,7 @@ int main(int argc, const char * argv[]) {
     	//ifctdb_addTail(obj: ifct_element);
 	}
 	
-	// 주어진 linked list 소스 코드를 활용하여 저 
-	
+	// 주어진 linked list 소스 코드를 활용하여 저장 
     //1-3. FILE pointer close
     fclose(fp); 
     
@@ -90,15 +89,22 @@ int main(int argc, const char * argv[]) {
                 break;
                 
             case MENU_PATIENT:
+                printf("환자 번호를 입력하세요 ");
+				scanf("%d", &pIndex);
+				
+				printf()
                 
                 break;
                 
             case MENU_PLACE:
-                
+                printf("장소를 입력하세요 :");
+                scanf("%d", &place);
                 break;
                 
             case MENU_AGE:
-                
+                printf("환자 나이를 입력하세요 ");
+				scanf("%d", &age);
+				 
                 break;
                 
             case MENU_TRACK:

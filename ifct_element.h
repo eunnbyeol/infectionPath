@@ -12,7 +12,7 @@
 void* ifctele_genElement(int index, int age, unsigned int detected_time, int history_place[N_HISTORY]);
 char* ifctele_getPlaceName(int placeIndex);
 int ifctele_getHisplaceIndex(void* obj, int index);
-unsigned int ifctele-getinfestedTime(void* obj);
+unsigned int ifctele_getinfestedTime(void* obj);
 int ifctele_getAge(void* obj);
 void ifctele_printElement(void* obj);
 #endif /*ifct_element_h*/
