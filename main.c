@@ -48,7 +48,7 @@ int main(int argc, const char * argv[]) {
     //1-2. loading each patient informations
     while (3 == fscanf(fp, "%d %d %d", &Index, &age, &time))
     {
-    	fscanf(fp, "%d %d %d %d %d", paceHist[0], placeHist[1], placeHist[2], placeHist[3], placeHist[4]);
+    	fscanf(fp, "%d %d %d %d %d", &placeHist[0], &placeHist[1], &placeHist[2], &placeHist[3], &placeHist[4]);
     	
     	//ifct_element = ifctele_genElement(pIndex, age, time, placeHist);
     	
