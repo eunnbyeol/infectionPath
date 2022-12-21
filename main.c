@@ -48,11 +48,17 @@ int main(int argc, const char * argv[]) {
     //1-2. loading each patient informations
     while (3 == fscanf(fp, "%d %d %d", &Index, &age, &time))
     {
+    	//fscanf로 공백단위로 3개의 정수를 읽어들여서 순서대로 pIndex, age, time에 넣는다.
+        //fscanf는 읽은 데이터 수를 return하므로 3개를 정상적으로 읽었을때만 뒤에 실행하는 용도로 while문 사용
     	fscanf(fp, "%d %d %d %d %d", &placeHist[0], &placeHist[1], &placeHist[2], &placeHist[3], &placeHist[4]);
-    	
+    	//첫 3개 뒤에는 placeHist이므로 다섯개를 읽어서 placeHist배열안에 넣어서 기록한다.
+
     	//ifct_element = ifctele_genElement(pIndex, age, time, placeHist);
-    	
+    	//위에서 파일로부터 읽어들이고 변수에 넣은 한 환자의 정보들을 환자정보 구조체를 생성하는 함수인 ifctele_genElement에 인자로 넣고
+        //그렇게 생성된 환자정보 구조체를 ifct_element에 담는다.
     	//ifctdb_addTail(obj: ifct_element);
+    	//위에서 ifct_element에 저장된 환자정보를 linked list 꼬리에 저장하는 add_Tail함수에 인자로 넣어 저장한다.
+
 	}
 	
 	// 주어진 linked list 소스 코드를 활용하여 저장 
