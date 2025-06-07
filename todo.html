@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>오늘의 할일</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="iphone-container page-transition">
+        <div class="status-bar">
+            <span class="time">9:41</span>
+            <div class="status-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <div class="todo-detail-header">
+            <button class="back-button" onclick="location.href='index.html'">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <h1>오늘의 할일</h1>
+            <div class="points-display">
+                <i class="fas fa-coins"></i>
+                <span id="total-coins">250</span>
+            </div>
+        </div>
+
+        <div class="todo-detail-container">
+            <div class="todo-list">
+                <div class="todo-item" data-task="exercise" data-time="30">
+                    <div class="todo-header">
+                        <div class="todo-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="todo-info">
+                            <h2>아침운동 30분</h2>
+                            <p class="todo-description">매일 아침 스트레칭과 가벼운 운동으로 하루를 시작해요!</p>
+                            <div class="todo-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>2코인 획득!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="todo-timer">
+                        <div class="timer-display">00:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-button start"><i class="fas fa-play"></i></button>
+                            <button class="timer-button pause" disabled><i class="fas fa-pause"></i></button>
+                            <button class="timer-button complete" disabled><i class="fas fa-check"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="todo-item" data-task="english">
+                    <div class="todo-header">
+                        <div class="todo-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <div class="todo-info">
+                            <h2>영어단어 50개 암기</h2>
+                            <p class="todo-description">오늘의 영단어를 학습하고 외워보세요!</p>
+                            <div class="todo-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>2코인 획득!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="todo-complete">
+                        <button class="complete-button" onclick="completeTodo(this, 'english')">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="todo-item" data-task="reading" data-time="60">
+                    <div class="todo-header">
+                        <div class="todo-icon">
+                            <i class="fas fa-book-open"></i>
+                        </div>
+                        <div class="todo-info">
+                            <h2>독서 1시간</h2>
+                            <p class="todo-description">좋은 책과 함께하는 특별한 시간</p>
+                            <div class="todo-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>2코인 획득!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="todo-timer">
+                        <div class="timer-display">00:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-button start"><i class="fas fa-play"></i></button>
+                            <button class="timer-button pause" disabled><i class="fas fa-pause"></i></button>
+                            <button class="timer-button complete" disabled><i class="fas fa-check"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="todo-item" data-task="coding">
+                    <div class="todo-header">
+                        <div class="todo-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <div class="todo-info">
+                            <h2>코딩공부</h2>
+                            <p class="todo-description">오늘의 코딩 과제를 해결해보세요!</p>
+                            <div class="todo-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>2코인 획득!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="todo-complete">
+                        <button class="complete-button" onclick="completeTodo(this, 'coding')">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="todo-item" data-task="diary">
+                    <div class="todo-header">
+                        <div class="todo-icon">
+                            <i class="fas fa-pen-nib"></i>
+                        </div>
+                        <div class="todo-info">
+                            <h2>일기쓰기</h2>
+                            <p class="todo-description">오늘 하루를 기록해보세요</p>
+                            <div class="todo-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>2코인 획득!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="todo-complete">
+                        <button class="complete-button" onclick="completeTodo(this, 'diary')">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button onclick="location.href='index.html'" class="active"><i class="fas fa-home"></i></button>
+            <button onclick="location.href='shop.html'"><i class="fas fa-store"></i></button>
+            <button><i class="fas fa-robot"></i></button>
+            <button onclick="location.href='furniture.html'"><i class="fas fa-couch"></i></button>
+            <button onclick="location.href='friends.html'"><i class="fas fa-user-friends"></i></button>
+        </div>
+    </div>
+
+    <!-- 코인 획득 알림 모달 -->
+    <div class="coin-notification" id="coinNotification">
+        <div class="coin-notification-content">
+            <i class="fas fa-coins"></i>
+            <p>축하합니다!</p>
+            <p>2코인을 획득했어요! 🎉</p>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.querySelector('.time').textContent = `${hours}:${minutes}`;
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // 타이머 관련 코드
+        const timerItems = document.querySelectorAll('.todo-timer');
+        timerItems.forEach(timerItem => {
+            let timer;
+            let seconds = 0;
+            let isRunning = false;
+            const todoItem = timerItem.closest('.todo-item');
+            const requiredMinutes = parseInt(todoItem.dataset.time);
+            const totalSeconds = requiredMinutes * 60;
+            const display = timerItem.querySelector('.timer-display');
+            const startBtn = timerItem.querySelector('.timer-button.start');
+            const pauseBtn = timerItem.querySelector('.timer-button.pause');
+            const completeBtn = timerItem.querySelector('.timer-button.complete');
+
+            startBtn.addEventListener('click', function() {
+                if (!isRunning) {
+                    isRunning = true;
+                    this.innerHTML = '<i class="fas fa-play"></i>';
+                    this.disabled = true;
+                    pauseBtn.disabled = false;
+                    
+                    timer = setInterval(() => {
+                        seconds++;
+                        const minutes = Math.floor(seconds / 60);
+                        const remainingSeconds = seconds % 60;
+                        display.textContent = 
+                            `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+
+                        if (seconds >= totalSeconds) {
+                            clearInterval(timer);
+                            completeBtn.disabled = false;
+                            pauseBtn.disabled = true;
+                            this.disabled = true;
+                        }
+                    }, 1000);
+                }
+            });
+
+            pauseBtn.addEventListener('click', function() {
+                if (isRunning) {
+                    isRunning = false;
+                    clearInterval(timer);
+                    startBtn.disabled = false;
+                    this.disabled = true;
+                }
+            });
+
+            completeBtn.addEventListener('click', function() {
+                if (seconds >= totalSeconds) {
+                    if (timer) {
+                        clearInterval(timer);
+                    }
+                    completeTodo(this);
+                }
+            });
+        });
+
+        // 할일 완료 처리
+        function completeTodo(button) {
+            const currentCoins = parseInt(document.getElementById('total-coins').textContent);
+            document.getElementById('total-coins').textContent = currentCoins + 2;
+            
+            button.disabled = true;
+            const todoItem = button.closest('.todo-item');
+            todoItem.classList.add('completed');
+            
+            // 코인 획득 알림 표시
+            const notification = document.getElementById('coinNotification');
+            notification.classList.add('show');
+            
+            // 2초 후 알림만 숨기기
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
+    </script>
+</body>
+</html> 

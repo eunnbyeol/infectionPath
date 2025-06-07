@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>송이의 가구 상점</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="iphone-container page-transition">
+        <div class="status-bar">
+            <span class="time">9:41</span>
+            <div class="status-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <div class="shop-header">
+            <h1>아이템 상점</h1>
+            <div class="points-item">
+                <i class="fas fa-coins"></i>
+                <span>250</span>
+            </div>
+        </div>
+
+        <div class="furniture-container">
+            <div class="furniture-grid">
+                <div class="furniture-item">
+                    <div class="item-image">
+                        <img src="의자.png" alt="의자" class="furniture-img">
+                    </div>
+                    <div class="item-info">
+                        <h3>의자</h3>
+                        <div class="item-price">
+                            <i class="fas fa-coins"></i>
+                            <span>170</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="furniture-item">
+                    <div class="item-image">
+                        <img src="전화기.png" alt="전화기" class="furniture-img">
+                    </div>
+                    <div class="item-info">
+                        <h3>전화기</h3>
+                        <div class="item-price">
+                            <i class="fas fa-coins"></i>
+                            <span>120</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="furniture-item">
+                    <div class="item-image">
+                        <img src="스탠딩.png" alt="스탠딩" class="furniture-img">
+                    </div>
+                    <div class="item-info">
+                        <h3>스탠딩</h3>
+                        <div class="item-price">
+                            <i class="fas fa-coins"></i>
+                            <span>80</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="furniture-item">
+                    <div class="item-image">
+                        <img src="강아지인형.png" alt="강아지 인형" class="furniture-img">
+                    </div>
+                    <div class="item-info">
+                        <h3>강아지 인형</h3>
+                        <div class="item-price">
+                            <i class="fas fa-coins"></i>
+                            <span>90</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="furniture-item">
+                    <div class="item-image">
+                        <img src="피크닉바구니.png" alt="피크닉 바구니" class="furniture-img">
+                    </div>
+                    <div class="item-info">
+                        <h3>피크닉 바구니</h3>
+                        <div class="item-price">
+                            <i class="fas fa-coins"></i>
+                            <span>110</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="furniture-item">
+                    <div class="item-image">
+                        <img src="피아노.png" alt="피아노" class="furniture-img">
+                    </div>
+                    <div class="item-info">
+                        <h3>피아노</h3>
+                        <div class="item-price">
+                            <i class="fas fa-coins"></i>
+                            <span>150</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button onclick="location.href='index.html'"><i class="fas fa-home"></i></button>
+            <button onclick="location.href='shop.html'"><i class="fas fa-store"></i></button>
+            <button><i class="fas fa-robot"></i></button>
+            <button class="active"><i class="fas fa-couch"></i></button>
+            <button onclick="location.href='friends.html'"><i class="fas fa-user-friends"></i></button>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.querySelector('.time').textContent = `${hours}:${minutes}`;
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // 가구 아이템 클릭 효과
+        const furnitureItems = document.querySelectorAll('.furniture-item');
+        furnitureItems.forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html> 

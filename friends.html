@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>송이의 방명록</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="iphone-container page-transition">
+        <div class="status-bar">
+            <span class="time">9:41</span>
+            <div class="status-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <div class="friends-header">
+            <h1>송이의 방명록</h1>
+        </div>
+
+        <div class="messages-container">
+            <div class="message-card">
+                <div class="message-header">
+                    <div class="friend-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="friend-info">
+                        <span class="friend-name">하니</span>
+                        <span class="message-date">2025년 6월 12일</span>
+                    </div>
+                </div>
+                <div class="message-content">
+                    <p>요즘 바쁘고 정신없지? 그래도 이렇게 하나씩 해내는 너 보면 진짜 대단한 거 알지? 완벽하지 않아도 괜찮아, 그냥 오늘도 열심히인 너가 최고야. 항상 응원하고 있어! ✨</p>
+                </div>
+            </div>
+
+            <div class="message-card">
+                <div class="message-header">
+                    <div class="friend-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="friend-info">
+                        <span class="friend-name">민지</span>
+                        <span class="message-date">2025년 6월 15일</span>
+                    </div>
+                </div>
+                <div class="message-content">
+                    <p>잘 안 되는 날도 있고, 하기 싫은 날도 있는데 그런 날에도 이 앱 켜서 뭐라도 해보려고 하는 거 자체가 너 진짜 멋진 거야. 💫</p>
+                </div>
+            </div>
+
+            <div class="message-card">
+                <div class="message-header">
+                    <div class="friend-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="friend-info">
+                        <span class="friend-name">해린</span>
+                        <span class="message-date">2025년 6월 18일</span>
+                    </div>
+                </div>
+                <div class="message-content">
+                    <p>너무 무리하지 말고, 필요하면 쉬어가도 돼. 천천히 가도 결국 네가 가고 싶은 곳에 도착할 거야! 🌟</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button onclick="location.href='index.html'"><i class="fas fa-home"></i></button>
+            <button onclick="location.href='shop.html'"><i class="fas fa-store"></i></button>
+            <button><i class="fas fa-robot"></i></button>
+            <button onclick="location.href='furniture.html'"><i class="fas fa-couch"></i></button>
+            <button class="active"><i class="fas fa-user-friends"></i></button>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.querySelector('.time').textContent = `${hours}:${minutes}`;
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+</body>
+</html> 

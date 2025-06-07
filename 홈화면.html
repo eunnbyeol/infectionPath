@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>송이의 방 꾸미기</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="iphone-container">
+        <div class="status-bar">
+            <span class="time">9:41</span>
+            <div class="status-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <div class="room-header">
+            <h1>송이 방</h1>
+        </div>
+
+        <div class="points-bar">
+            <div class="points-item">
+                <i class="fas fa-coins"></i>
+                <span>250</span>
+            </div>
+        </div>
+
+        <div class="todo-list">
+            <div class="todo-header">
+                <h2>오늘의 할 일</h2>
+            </div>
+            
+            <div class="todo-item active">
+                <i class="fas fa-dumbbell"></i>
+                <div class="todo-content">
+                    <div class="todo-title">아침운동 30분</div>
+                    <div class="todo-points">코인 2개</div>
+                </div>
+            </div>
+
+            <div class="todo-item">
+                <i class="fas fa-book"></i>
+                <div class="todo-content">
+                    <div class="todo-title">영어단어 50개 암기</div>
+                    <div class="todo-points">코인 2개</div>
+                </div>
+            </div>
+
+            <div class="todo-item">
+                <i class="fas fa-book-open"></i>
+                <div class="todo-content">
+                    <div class="todo-title">독서 1시간</div>
+                    <div class="todo-points">코인 2개</div>
+                </div>
+            </div>
+
+            <div class="todo-item">
+                <i class="fas fa-code"></i>
+                <div class="todo-content">
+                    <div class="todo-title">코딩공부</div>
+                    <div class="todo-points">코인 2개</div>
+                </div>
+            </div>
+
+            <div class="todo-item">
+                <i class="fas fa-pen-nib"></i>
+                <div class="todo-content">
+                    <div class="todo-title">일기쓰기</div>
+                    <div class="todo-points">코인 2개</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="canvas-area">
+            <div class="canvas">
+                <img src="기본_배경제거.png" alt="꾸미기 씬" class="scene">
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button class="active"><i class="fas fa-home"></i></button>
+            <button><i class="fas fa-store"></i></button>
+            <button><i class="fas fa-robot"></i></button>
+            <button><i class="fas fa-couch"></i></button>
+        </div>
+    </div>
+
+    <script>
+        // 현재 시간 표시
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.querySelector('.time').textContent = `${hours}:${minutes}`;
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // 버튼 클릭 효과
+        const buttons = document.querySelectorAll('.bottom-nav button');
+        buttons.forEach(button => {
+            button.addEventListener('click', function() {
+                document.querySelector('.bottom-nav button.active')?.classList.remove('active');
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>송이의 상점</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="iphone-container page-transition">
+        <div class="status-bar">
+            <span class="time">9:41</span>
+            <div class="status-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <div class="shop-header">
+            <h1>상점</h1>
+            <div class="points-item">
+                <i class="fas fa-coins"></i>
+                <span>250</span>
+            </div>
+        </div>
+
+        <div class="shop-container">
+            <div class="shop-item">
+                <div class="item-image">
+                    <img src="불꽃뿅망치.png" alt="불꽃뿅망치" class="hammer-img">
+                </div>
+                <div class="item-info">
+                    <h3>불꽃뿅망치</h3>
+                    <div class="item-price">
+                        <i class="fas fa-coins"></i>
+                        <span>135</span>
+                    </div>
+                </div>
+                <button class="buy-button">구매하기</button>
+            </div>
+
+            <div class="shop-item">
+                <div class="item-image">
+                    <img src="하트뿅망치.png" alt="하트뿅망치" class="hammer-img">
+                </div>
+                <div class="item-info">
+                    <h3>하트뿅망치</h3>
+                    <div class="item-price">
+                        <i class="fas fa-coins"></i>
+                        <span>250</span>
+                    </div>
+                </div>
+                <button class="buy-button">구매하기</button>
+            </div>
+
+            <div class="shop-item">
+                <div class="item-image">
+                    <img src="번개뿅망치.png" alt="번개뿅망치" class="hammer-img">
+                </div>
+                <div class="item-info">
+                    <h3>번개뿅망치</h3>
+                    <div class="item-price">
+                        <i class="fas fa-coins"></i>
+                        <span>200</span>
+                    </div>
+                </div>
+                <button class="buy-button">구매하기</button>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button onclick="location.href='index.html'"><i class="fas fa-home"></i></button>
+            <button class="active"><i class="fas fa-store"></i></button>
+            <button><i class="fas fa-robot"></i></button>
+            <button onclick="location.href='furniture.html'"><i class="fas fa-couch"></i></button>
+            <button onclick="location.href='friends.html'"><i class="fas fa-user-friends"></i></button>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.querySelector('.time').textContent = `${hours}:${minutes}`;
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        // 구매 버튼 클릭 효과
+        const buyButtons = document.querySelectorAll('.buy-button');
+        buyButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                this.style.transform = 'scale(0.95)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                    // 여기에 구매 로직 추가
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html> 
