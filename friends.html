@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>송이의 방명록</title>
+    <title>홈트룸</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
@@ -19,54 +19,117 @@
             </div>
         </div>
 
-        <div class="friends-header">
-            <h1>송이의 방명록</h1>
+        <div class="todo-detail-header">
+            <button class="back-button" onclick="location.href='index.html'">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <h1>홈트룸</h1>
+            <div class="points-display">
+                <i class="fas fa-coins"></i>
+                <span id="total-coins">250</span>
+            </div>
         </div>
 
-        <div class="messages-container">
-            <div class="message-card">
-                <div class="message-header">
-                    <div class="friend-avatar">
-                        <i class="fas fa-user-circle"></i>
+        <div class="todo-detail-container">
+            <div class="todo-list">
+                <div class="todo-item" data-task="running" data-time="45">
+                    <div class="todo-header">
+                        <div class="todo-icon">
+                            <i class="fas fa-running"></i>
+                        </div>
+                        <div class="todo-info">
+                            <h2>런닝머신 45분</h2>
+                            <p class="todo-description">유산소 운동으로 건강한 하루를 시작해요!</p>
+                            <div class="todo-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>2코인 획득!</span>
+                            </div>
+                        </div>
                     </div>
-                    <div class="friend-info">
-                        <span class="friend-name">하니</span>
-                        <span class="message-date">2025년 6월 12일</span>
+                    <div class="todo-timer">
+                        <div class="timer-display">00:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-button start"><i class="fas fa-play"></i></button>
+                            <button class="timer-button pause" disabled><i class="fas fa-pause"></i></button>
+                            <button class="timer-button complete" disabled><i class="fas fa-check"></i></button>
+                        </div>
                     </div>
                 </div>
-                <div class="message-content">
-                    <p>요즘 바쁘고 정신없지? 그래도 이렇게 하나씩 해내는 너 보면 진짜 대단한 거 알지? 완벽하지 않아도 괜찮아, 그냥 오늘도 열심히인 너가 최고야. 항상 응원하고 있어! ✨</p>
+
+                <div class="todo-item" data-task="stretching" data-time="10">
+                    <div class="todo-header">
+                        <div class="todo-icon">
+                            <i class="fas fa-child"></i>
+                        </div>
+                        <div class="todo-info">
+                            <h2>스트레칭 10분</h2>
+                            <p class="todo-description">몸을 부드럽게 풀어주세요!</p>
+                            <div class="todo-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>2코인 획득!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="todo-timer">
+                        <div class="timer-display">00:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-button start"><i class="fas fa-play"></i></button>
+                            <button class="timer-button pause" disabled><i class="fas fa-pause"></i></button>
+                            <button class="timer-button complete" disabled><i class="fas fa-check"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="todo-item" data-task="stairs" data-time="30">
+                    <div class="todo-header">
+                        <div class="todo-icon">
+                            <i class="fas fa-stairs"></i>
+                        </div>
+                        <div class="todo-info">
+                            <h2>천국의 계단 30분</h2>
+                            <p class="todo-description">계단 운동으로 체력을 키워보세요!</p>
+                            <div class="todo-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>2코인 획득!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="todo-timer">
+                        <div class="timer-display">00:00</div>
+                        <div class="timer-controls">
+                            <button class="timer-button start"><i class="fas fa-play"></i></button>
+                            <button class="timer-button pause" disabled><i class="fas fa-pause"></i></button>
+                            <button class="timer-button complete" disabled><i class="fas fa-check"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="todo-item" data-task="plank" data-count="30">
+                    <div class="todo-header">
+                        <div class="todo-icon">
+                            <i class="fas fa-dumbbell"></i>
+                        </div>
+                        <div class="todo-info">
+                            <h2>플랭크 30회</h2>
+                            <p class="todo-description">코어 근력을 강화해보세요!</p>
+                            <div class="todo-reward">
+                                <i class="fas fa-coins"></i>
+                                <span>2코인 획득!</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="todo-complete">
+                        <button class="complete-button" onclick="completeTodo(this, 'plank')">
+                            <i class="fas fa-check"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="message-card">
-                <div class="message-header">
-                    <div class="friend-avatar">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="friend-info">
-                        <span class="friend-name">민지</span>
-                        <span class="message-date">2025년 6월 15일</span>
-                    </div>
-                </div>
-                <div class="message-content">
-                    <p>잘 안 되는 날도 있고, 하기 싫은 날도 있는데 그런 날에도 이 앱 켜서 뭐라도 해보려고 하는 거 자체가 너 진짜 멋진 거야. 💫</p>
-                </div>
-            </div>
-
-            <div class="message-card">
-                <div class="message-header">
-                    <div class="friend-avatar">
-                        <i class="fas fa-user-circle"></i>
-                    </div>
-                    <div class="friend-info">
-                        <span class="friend-name">해린</span>
-                        <span class="message-date">2025년 6월 18일</span>
-                    </div>
-                </div>
-                <div class="message-content">
-                    <p>너무 무리하지 말고, 필요하면 쉬어가도 돼. 천천히 가도 결국 네가 가고 싶은 곳에 도착할 거야! 🌟</p>
-                </div>
+        <div class="canvas-area">
+            <div class="canvas">
+                <img src="친구랑.png" alt="홈트레이닝" class="scene">
             </div>
         </div>
 
@@ -76,6 +139,16 @@
             <button><i class="fas fa-robot"></i></button>
             <button onclick="location.href='furniture.html'"><i class="fas fa-couch"></i></button>
             <button class="active"><i class="fas fa-user-friends"></i></button>
+        </div>
+    </div>
+
+    <!-- 코인 획득 알림 모달 -->
+    <div class="coin-notification" id="coinNotification">
+        <div class="coin-notification-content">
+            <i class="fas fa-coins"></i>
+            <p>축하합니다!</p>
+            <p>2코인을 획득했어요! 🎉</p>
+            <p class="friend-bonus">친구가 완수할 경우 1코인이 더 지급됩니다!</p>
         </div>
     </div>
 
@@ -89,6 +162,83 @@
         
         updateTime();
         setInterval(updateTime, 1000);
+
+        // 타이머 관련 코드
+        const timerItems = document.querySelectorAll('.todo-timer');
+        timerItems.forEach(timerItem => {
+            let timer;
+            let seconds = 0;
+            let isRunning = false;
+            const todoItem = timerItem.closest('.todo-item');
+            const requiredMinutes = parseInt(todoItem.dataset.time);
+            const totalSeconds = requiredMinutes * 60;
+            const display = timerItem.querySelector('.timer-display');
+            const startBtn = timerItem.querySelector('.timer-button.start');
+            const pauseBtn = timerItem.querySelector('.timer-button.pause');
+            const completeBtn = timerItem.querySelector('.timer-button.complete');
+
+            startBtn.addEventListener('click', function() {
+                if (!isRunning) {
+                    isRunning = true;
+                    this.disabled = true;
+                    pauseBtn.disabled = false;
+                    
+                    timer = setInterval(() => {
+                        seconds++;
+                        const minutes = Math.floor(seconds / 60);
+                        const remainingSeconds = seconds % 60;
+                        display.textContent = 
+                            `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+
+                        if (seconds >= totalSeconds) {
+                            clearInterval(timer);
+                            completeBtn.disabled = false;
+                            pauseBtn.disabled = true;
+                            this.disabled = true;
+                        }
+                    }, 1000);
+                }
+            });
+
+            pauseBtn.addEventListener('click', function() {
+                if (isRunning) {
+                    isRunning = false;
+                    clearInterval(timer);
+                    startBtn.disabled = false;
+                    this.disabled = true;
+                }
+            });
+
+            completeBtn.addEventListener('click', function() {
+                if (seconds >= totalSeconds) {
+                    completeTodo(this);
+                }
+            });
+        });
+
+        function completeTodo(button) {
+            const currentCoins = parseInt(document.getElementById('total-coins').textContent);
+            document.getElementById('total-coins').textContent = currentCoins + 2;
+            
+            button.disabled = true;
+            const todoItem = button.closest('.todo-item');
+            todoItem.classList.add('completed');
+            
+            const notification = document.getElementById('coinNotification');
+            notification.classList.add('show');
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 2000);
+        }
     </script>
+
+    <style>
+        .friend-bonus {
+            font-size: 14px;
+            color: #666;
+            margin-top: 8px;
+        }
+    </style>
 </body>
 </html> 
