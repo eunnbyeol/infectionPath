@@ -74,9 +74,9 @@
         <div class="bottom-nav">
             <button onclick="location.href='index.html'"><i class="fas fa-home"></i></button>
             <button class="active"><i class="fas fa-store"></i></button>
-            <button><i class="fas fa-robot"></i></button>
-            <button onclick="location.href='furniture.html'"><i class="fas fa-couch"></i></button>
             <button onclick="location.href='friends.html'"><i class="fas fa-user-friends"></i></button>
+            <button onclick="location.href='furniture.html'"><i class="fas fa-couch"></i></button>
+            <button onclick="location.href='profile.html'"><i class="fas fa-user-circle"></i></button>
         </div>
     </div>
 
@@ -91,17 +91,65 @@
         updateTime();
         setInterval(updateTime, 1000);
 
-        // 구매 버튼 클릭 효과
-        const buyButtons = document.querySelectorAll('.buy-button');
-        buyButtons.forEach(button => {
+        // 코인 초기화 및 설정
+        localStorage.setItem('totalCoins', '250');
+        document.querySelector('.points-item span').textContent = '250';
+
+        // 구매 상태 불러오기
+        function loadPurchaseStatus() {
+            const purchasedItems = sessionStorage.getItem('purchasedItems');
+            if (purchasedItems) {
+                const items = JSON.parse(purchasedItems);
+                items.forEach(itemName => {
+                    const button = document.querySelector(`[data-item="${itemName}"] .buy-button`);
+                    if (button) {
+                        button.disabled = true;
+                        button.textContent = '구매 완료';
+                    }
+                });
+            }
+        }
+
+        // 아이템 구매 함수
+        function buyItem(button, price) {
+            const currentCoins = parseInt(localStorage.getItem('totalCoins') || '250');
+            if (currentCoins >= price) {
+                const newCoins = currentCoins - price;
+                localStorage.setItem('totalCoins', newCoins.toString());
+                document.querySelector('.points-item span').textContent = newCoins;
+                
+                const itemName = button.closest('.shop-item').querySelector('h3').textContent;
+                const purchasedItems = JSON.parse(sessionStorage.getItem('purchasedItems') || '[]');
+                purchasedItems.push(itemName);
+                sessionStorage.setItem('purchasedItems', JSON.stringify(purchasedItems));
+                
+                button.disabled = true;
+                button.textContent = '구매 완료';
+            } else {
+                alert('코인이 부족합니다!');
+            }
+        }
+
+        // 구매 버튼에 데이터 속성 추가 및 이벤트 리스너 설정
+        const shopItems = document.querySelectorAll('.shop-item');
+        shopItems.forEach(item => {
+            const button = item.querySelector('.buy-button');
+            const price = parseInt(item.querySelector('.item-price span').textContent);
+            const itemName = item.querySelector('h3').textContent;
+            
+            item.setAttribute('data-item', itemName);
+            
             button.addEventListener('click', function() {
                 this.style.transform = 'scale(0.95)';
                 setTimeout(() => {
                     this.style.transform = 'scale(1)';
-                    // 여기에 구매 로직 추가
+                    buyItem(this, price);
                 }, 100);
             });
         });
+
+        // 페이지 로드 시 구매 상태 불러오기
+        loadPurchaseStatus();
     </script>
 </body>
 </html> 

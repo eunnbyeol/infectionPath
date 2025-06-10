@@ -178,6 +178,16 @@
         updateTime();
         setInterval(updateTime, 1000);
 
+        // 코인 데이터 로드
+        function loadCoins() {
+            const savedCoins = localStorage.getItem('totalCoins');
+            if (savedCoins) {
+                document.querySelectorAll('#total-coins').forEach(element => {
+                    element.textContent = savedCoins;
+                });
+            }
+        }
+
         // 타이머 관련 코드
         const timerItems = document.querySelectorAll('.todo-timer');
         timerItems.forEach(timerItem => {
@@ -195,7 +205,6 @@
             startBtn.addEventListener('click', function() {
                 if (!isRunning) {
                     isRunning = true;
-                    this.innerHTML = '<i class="fas fa-play"></i>';
                     this.disabled = true;
                     pauseBtn.disabled = false;
                     
@@ -227,32 +236,34 @@
 
             completeBtn.addEventListener('click', function() {
                 if (seconds >= totalSeconds) {
-                    if (timer) {
-                        clearInterval(timer);
-                    }
                     completeTodo(this);
                 }
             });
         });
 
-        // 할일 완료 처리
         function completeTodo(button) {
-            const currentCoins = parseInt(document.getElementById('total-coins').textContent);
-            document.getElementById('total-coins').textContent = currentCoins + 2;
+            const currentCoins = parseInt(localStorage.getItem('totalCoins') || '250');
+            const newCoins = currentCoins + 2;
+            localStorage.setItem('totalCoins', newCoins.toString());
+            
+            document.querySelectorAll('#total-coins').forEach(element => {
+                element.textContent = newCoins;
+            });
             
             button.disabled = true;
             const todoItem = button.closest('.todo-item');
             todoItem.classList.add('completed');
             
-            // 코인 획득 알림 표시
             const notification = document.getElementById('coinNotification');
             notification.classList.add('show');
             
-            // 2초 후 알림만 숨기기
             setTimeout(() => {
                 notification.classList.remove('show');
             }, 2000);
         }
+
+        // 페이지 로드 시 코인 데이터 불러오기
+        loadCoins();
     </script>
 </body>
 </html> 

@@ -136,9 +136,9 @@
         <div class="bottom-nav">
             <button onclick="location.href='index.html'"><i class="fas fa-home"></i></button>
             <button onclick="location.href='shop.html'"><i class="fas fa-store"></i></button>
-            <button><i class="fas fa-robot"></i></button>
-            <button onclick="location.href='furniture.html'"><i class="fas fa-couch"></i></button>
             <button class="active"><i class="fas fa-user-friends"></i></button>
+            <button onclick="location.href='furniture.html'"><i class="fas fa-couch"></i></button>
+            <button onclick="location.href='profile.html'"><i class="fas fa-user-circle"></i></button>
         </div>
     </div>
 
@@ -153,6 +153,21 @@
     </div>
 
     <script>
+        // 세션 스토리지에서 완료 상태 불러오기
+        function loadCompletionStatus() {
+            const completedTasks = sessionStorage.getItem('completedTasks');
+            if (completedTasks) {
+                const tasks = JSON.parse(completedTasks);
+                tasks.forEach(taskId => {
+                    const button = document.querySelector(`[data-task="${taskId}"] .complete-button`);
+                    if (button) {
+                        button.disabled = true;
+                        button.closest('.todo-item').classList.add('completed');
+                    }
+                });
+            }
+        }
+
         function updateTime() {
             const now = new Date();
             const hours = now.getHours().toString().padStart(2, '0');
@@ -163,65 +178,30 @@
         updateTime();
         setInterval(updateTime, 1000);
 
-        // 타이머 관련 코드
-        const timerItems = document.querySelectorAll('.todo-timer');
-        timerItems.forEach(timerItem => {
-            let timer;
-            let seconds = 0;
-            let isRunning = false;
-            const todoItem = timerItem.closest('.todo-item');
-            const requiredMinutes = parseInt(todoItem.dataset.time);
-            const totalSeconds = requiredMinutes * 60;
-            const display = timerItem.querySelector('.timer-display');
-            const startBtn = timerItem.querySelector('.timer-button.start');
-            const pauseBtn = timerItem.querySelector('.timer-button.pause');
-            const completeBtn = timerItem.querySelector('.timer-button.complete');
-
-            startBtn.addEventListener('click', function() {
-                if (!isRunning) {
-                    isRunning = true;
-                    this.disabled = true;
-                    pauseBtn.disabled = false;
-                    
-                    timer = setInterval(() => {
-                        seconds++;
-                        const minutes = Math.floor(seconds / 60);
-                        const remainingSeconds = seconds % 60;
-                        display.textContent = 
-                            `${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
-
-                        if (seconds >= totalSeconds) {
-                            clearInterval(timer);
-                            completeBtn.disabled = false;
-                            pauseBtn.disabled = true;
-                            this.disabled = true;
-                        }
-                    }, 1000);
-                }
-            });
-
-            pauseBtn.addEventListener('click', function() {
-                if (isRunning) {
-                    isRunning = false;
-                    clearInterval(timer);
-                    startBtn.disabled = false;
-                    this.disabled = true;
-                }
-            });
-
-            completeBtn.addEventListener('click', function() {
-                if (seconds >= totalSeconds) {
-                    completeTodo(this);
-                }
-            });
+        // 코인 초기화 및 설정
+        localStorage.setItem('totalCoins', '250');
+        document.querySelectorAll('#total-coins').forEach(element => {
+            element.textContent = '250';
         });
 
         function completeTodo(button) {
-            const currentCoins = parseInt(document.getElementById('total-coins').textContent);
-            document.getElementById('total-coins').textContent = currentCoins + 2;
+            const todoItem = button.closest('.todo-item');
+            const taskId = todoItem.dataset.task;
+            
+            // 현재 완료된 작업 목록 가져오기
+            const completedTasks = JSON.parse(sessionStorage.getItem('completedTasks') || '[]');
+            completedTasks.push(taskId);
+            sessionStorage.setItem('completedTasks', JSON.stringify(completedTasks));
+
+            const currentCoins = parseInt(localStorage.getItem('totalCoins') || '250');
+            const newCoins = currentCoins + 2;
+            localStorage.setItem('totalCoins', newCoins.toString());
+            
+            document.querySelectorAll('#total-coins').forEach(element => {
+                element.textContent = newCoins;
+            });
             
             button.disabled = true;
-            const todoItem = button.closest('.todo-item');
             todoItem.classList.add('completed');
             
             const notification = document.getElementById('coinNotification');
@@ -231,6 +211,9 @@
                 notification.classList.remove('show');
             }, 2000);
         }
+
+        // 페이지 로드 시 완료 상태 불러오기
+        loadCompletionStatus();
     </script>
 
     <style>

@@ -26,7 +26,7 @@
         <div class="points-bar">
             <div class="points-item">
                 <i class="fas fa-coins"></i>
-                <span>250</span>
+                <span id="total-coins">250</span>
             </div>
         </div>
 
@@ -149,9 +149,9 @@
         <div class="bottom-nav">
             <button class="active"><i class="fas fa-home"></i></button>
             <button onclick="location.href='shop.html'"><i class="fas fa-store"></i></button>
-            <button><i class="fas fa-robot"></i></button>
-            <button onclick="location.href='furniture.html'"><i class="fas fa-couch"></i></button>
             <button onclick="location.href='friends.html'"><i class="fas fa-user-friends"></i></button>
+            <button onclick="location.href='furniture.html'"><i class="fas fa-couch"></i></button>
+            <button onclick="location.href='profile.html'"><i class="fas fa-user-circle"></i></button>
         </div>
     </div>
 
@@ -167,18 +167,41 @@
         updateTime();
         setInterval(updateTime, 1000);
 
+        // 코인 관련 함수
+        function loadCoins() {
+            const savedCoins = localStorage.getItem('totalCoins');
+            if (savedCoins) {
+                document.querySelectorAll('#total-coins').forEach(element => {
+                    element.textContent = savedCoins;
+                });
+            } else {
+                // 초기 코인 설정
+                localStorage.setItem('totalCoins', '250');
+            }
+        }
+
+        function updateCoins(amount) {
+            const currentCoins = parseInt(localStorage.getItem('totalCoins') || '250');
+            const newCoins = currentCoins + amount;
+            localStorage.setItem('totalCoins', newCoins.toString());
+            document.querySelectorAll('#total-coins').forEach(element => {
+                element.textContent = newCoins;
+            });
+        }
+
+        // 페이지 로드 시 코인 데이터 불러오기
+        loadCoins();
+
         // 버튼 클릭 효과와 페이지 전환
         const buttons = document.querySelectorAll('.bottom-nav button, .todo-item');
         buttons.forEach(button => {
             button.addEventListener('click', function(e) {
                 if (this.classList.contains('todo-item')) {
-                    // 할일 항목 클릭 시 페이지 전환 효과
                     document.querySelector('.iphone-container').style.opacity = '0';
                     setTimeout(() => {
-                        location.href = 'file:///C:/Users/user/Documents/카카오톡%20받은%20파일/index%20(1).html';
+                        location.href = 'todo.html';
                     }, 300);
                 } else {
-                    // 네비게이션 버튼 클릭 시
                     document.querySelector('.bottom-nav button.active')?.classList.remove('active');
                     this.classList.add('active');
                 }
