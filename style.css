@@ -104,6 +104,30 @@ body {
     font-size: 16px;
 }
 
+.coin-add-button {
+    background: #FFB02E;
+    border: none;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    margin-left: 4px;
+    cursor: pointer;
+    transition: transform 0.1s;
+    color: white !important;
+}
+
+.coin-add-button i {
+    color: white !important;
+}
+
+.coin-add-button:active {
+    transform: scale(0.95);
+}
+
 .progress-bar {
     flex: 1;
     height: 6px;

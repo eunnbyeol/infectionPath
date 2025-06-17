@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>코인 상점</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .coin-shop-container {
+            padding: 20px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .coin-shop-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+            padding-bottom: 20px;
+        }
+
+        .coin-item {
+            background: white;
+            border-radius: 16px;
+            padding: 16px;
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .coin-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .coin-amount {
+            font-size: 18px;
+            font-weight: 600;
+            color: #FFB800;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .coin-price {
+            font-size: 16px;
+            color: #666;
+        }
+
+        .buy-button {
+            background: #FFB02E;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 8px 16px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: transform 0.1s;
+            width: 100%;
+        }
+
+        .buy-button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div class="iphone-container page-transition">
+        <div class="status-bar">
+            <span class="time">9:41</span>
+            <div class="status-icons">
+                <i class="fas fa-signal"></i>
+                <i class="fas fa-wifi"></i>
+                <i class="fas fa-battery-full"></i>
+            </div>
+        </div>
+
+        <div class="todo-detail-header">
+            <button class="back-button" onclick="location.href='index.html'">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <h1>코인 상점</h1>
+            <div class="points-display">
+                <i class="fas fa-coins"></i>
+                <span id="total-coins">250</span>
+            </div>
+        </div>
+
+        <div class="coin-shop-container">
+            <div class="coin-shop-grid">
+                <div class="coin-item">
+                    <img src="coin.png" alt="100 코인" class="coin-image">
+                    <div class="coin-amount">
+                        <i class="fas fa-coins"></i>
+                        <span>100</span>
+                    </div>
+                    <div class="coin-price">₩1,000</div>
+                    <button class="buy-button" onclick="purchaseCoin(100, 1000)">구매하기</button>
+                </div>
+
+                <div class="coin-item">
+                    <img src="coin.png" alt="200 코인" class="coin-image">
+                    <div class="coin-amount">
+                        <i class="fas fa-coins"></i>
+                        <span>200</span>
+                    </div>
+                    <div class="coin-price">₩2,000</div>
+                    <button class="buy-button" onclick="purchaseCoin(200, 2000)">구매하기</button>
+                </div>
+
+                <div class="coin-item">
+                    <img src="coin.png" alt="500 코인" class="coin-image">
+                    <div class="coin-amount">
+                        <i class="fas fa-coins"></i>
+                        <span>500</span>
+                    </div>
+                    <div class="coin-price">₩4,500</div>
+                    <button class="buy-button" onclick="purchaseCoin(500, 4500)">구매하기</button>
+                </div>
+
+                <div class="coin-item">
+                    <img src="coin.png" alt="1000 코인" class="coin-image">
+                    <div class="coin-amount">
+                        <i class="fas fa-coins"></i>
+                        <span>1,000</span>
+                    </div>
+                    <div class="coin-price">₩8,000</div>
+                    <button class="buy-button" onclick="purchaseCoin(1000, 8000)">구매하기</button>
+                </div>
+
+                <div class="coin-item">
+                    <img src="coin.png" alt="2000 코인" class="coin-image">
+                    <div class="coin-amount">
+                        <i class="fas fa-coins"></i>
+                        <span>2,000</span>
+                    </div>
+                    <div class="coin-price">₩15,000</div>
+                    <button class="buy-button" onclick="purchaseCoin(2000, 15000)">구매하기</button>
+                </div>
+
+                <div class="coin-item">
+                    <img src="coin.png" alt="5000 코인" class="coin-image">
+                    <div class="coin-amount">
+                        <i class="fas fa-coins"></i>
+                        <span>5,000</span>
+                    </div>
+                    <div class="coin-price">₩35,000</div>
+                    <button class="buy-button" onclick="purchaseCoin(5000, 35000)">구매하기</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom-nav">
+            <button onclick="location.href='index.html'"><i class="fas fa-home"></i></button>
+            <button onclick="location.href='shop.html'"><i class="fas fa-store"></i></button>
+            <button onclick="location.href='friends.html'"><i class="fas fa-user-friends"></i></button>
+            <button onclick="location.href='furniture.html'"><i class="fas fa-couch"></i></button>
+            <button onclick="location.href='profile.html'"><i class="fas fa-user-circle"></i></button>
+        </div>
+    </div>
+
+    <div class="coin-notification" id="coinNotification">
+        <div class="coin-notification-content">
+            <i class="fas fa-coins"></i>
+            <p>구매가 완료되었습니다!</p>
+            <p class="coin-amount-text"></p>
+        </div>
+    </div>
+
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const hours = now.getHours().toString().padStart(2, '0');
+            const minutes = now.getMinutes().toString().padStart(2, '0');
+            document.querySelector('.time').textContent = `${hours}:${minutes}`;
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+
+        function loadCoins() {
+            const savedCoins = localStorage.getItem('totalCoins');
+            if (savedCoins) {
+                document.querySelectorAll('#total-coins').forEach(element => {
+                    element.textContent = savedCoins;
+                });
+            }
+        }
+
+        function purchaseCoin(amount, price) {
+            if (confirm(`${price.toLocaleString()}원을 결제하시겠습니까?`)) {
+                const currentCoins = parseInt(localStorage.getItem('totalCoins') || '250');
+                const newCoins = currentCoins + amount;
+                localStorage.setItem('totalCoins', newCoins.toString());
+                
+                document.querySelectorAll('#total-coins').forEach(element => {
+                    element.textContent = newCoins;
+                });
+
+                const notification = document.getElementById('coinNotification');
+                notification.querySelector('.coin-amount-text').textContent = 
+                    `${amount.toLocaleString()} 코인이 추가되었습니다!`;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 2000);
+            }
+        }
+
+        loadCoins();
+    </script>
+</body>
+</html> 
